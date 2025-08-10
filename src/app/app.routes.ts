@@ -1,4 +1,5 @@
 
+import { Routes } from '@angular/router';
 import { DevopsComponent } from './pages/devops.component';
 import { JenkinsComponent } from './pages/jenkins.component';
 import { DockerComponent } from './pages/docker.component';

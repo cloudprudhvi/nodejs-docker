@@ -1,6 +1,55 @@
-# DevopsTrainingFrontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.5.
+# DevOps Training Frontend
+
+This is an Angular application for DevOps training, featuring pages for DevOps, Jenkins, Docker, AWS, Kubernetes, Ansible, and Git. Each page includes a placeholder for repository links and an image for the tool.
+
+## Project Structure
+
+- `src/app/pages/` — Contains standalone components for each DevOps tool
+- `src/assets/images/` — Place PNG images for each tool here (see below)
+- `Dockerfile` — Multi-stage build (Node + NGINX)
+- `Dockerfile.single-stage` — Single-stage build (Node + http-server)
+## Images for Tools
+
+Add PNG images for each tool in `src/assets/images/` with these filenames:
+
+- `devops.png`
+- `jenkins.png`
+- `docker.png`
+- `aws.png`
+- `k8s.png`
+- `ansible.png`
+- `git.png`
+
+You can use official logos or open-source icons. The HTML for each page already references these filenames.
+
+## Docker: Build & Run
+
+### Multi-stage (NGINX)
+
+Build:
+```bash
+docker build -t devops-training-frontend:multi-stage -f Dockerfile .
+```
+Run:
+```bash
+docker run -p 8080:80 devops-training-frontend:multi-stage
+```
+App will be available at http://localhost:8080
+
+### Single-stage (http-server)
+
+Build:
+```bash
+docker build -t devops-training-frontend:single-stage -f Dockerfile.single-stage .
+```
+Run:
+```bash
+docker run -p 8080:8080 devops-training-frontend:single-stage
+```
+App will be available at http://localhost:8080
+
+
 
 ## Development server
 
@@ -10,7 +59,7 @@ To start a local development server, run:
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open http://localhost:4200/
 
 ## Code scaffolding
 
@@ -26,15 +75,16 @@ For a complete list of available schematics (such as `components`, `directives`,
 ng generate --help
 ```
 
+
 ## Building
 
-To build the project run:
+To build the project:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
