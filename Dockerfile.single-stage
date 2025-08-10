@@ -1,8 +1,10 @@
 # Single-stage Dockerfile for Angular DevOps Training Frontend
 FROM node:20-alpine
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
-RUN npm ci && npm run build -- --output-path=dist
+RUN npm run build --configuration production
 RUN npm install -g http-server
 EXPOSE 8080
-CMD ["http-server", "dist", "-p", "8080"]
+CMD ["http-server", "dist/devops-training-frontend", "-p", "8080"]

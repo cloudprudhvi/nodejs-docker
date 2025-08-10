@@ -4,10 +4,10 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN npm run build -- --output-path=dist
+RUN npm run build --configuration production
 
 FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/devops-training-frontend /usr/share/nginx/html
 COPY public/favicon.ico /usr/share/nginx/html/favicon.ico
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
