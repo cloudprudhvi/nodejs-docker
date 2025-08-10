@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN npm run build --configuration production
+RUN npx ng build --configuration=production
 RUN npm install -g http-server
 EXPOSE 8080
 CMD ["http-server", "dist/devops-training-frontend", "-p", "8080"]
